@@ -76,11 +76,26 @@ class SingleLinkList(object):
 
     """删除节点"""
     def remove(self,item_t):
-        pass
+        cur = self.__head
+        pre = None
+
+        while cur != None:
+            if cur.elem == item_t:
+                pre.next = cur.next
+            else:
+                pre = cur
+                cur = cur.next
 
     """查找节点是否存在"""
-    def search(self):
-        pass
+    def search(self,item_t):
+        cur = slef.__head
+
+        while cur != None:
+            if cur.elem == item_t:
+                return True
+            else:
+                cur = cur.next
+        return False
 
 
 def main():
