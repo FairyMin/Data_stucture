@@ -74,21 +74,26 @@ class SingleLinkList(object):
             #此处 的pre.next 与 前一句的pre.next？？！！
             pre.next = node
 
-    """删除节点"""
+    """删除节点--用两个游标"""
     def remove(self,item_t):
         cur = self.__head
         pre = None
 
         while cur != None:
             if cur.elem == item_t:
-                pre.next = cur.next
+                #判断此节点是否为头节点
+                if cur == self.__head:
+                    self.__head = cur.next
+                else:
+                    pre.next = cur.next
+                break
             else:
                 pre = cur
                 cur = cur.next
 
     """查找节点是否存在"""
     def search(self,item_t):
-        cur = slef.__head
+        cur = self.__head
 
         while cur != None:
             if cur.elem == item_t:
@@ -114,6 +119,7 @@ def main():
     ll.insert(3,7)
     ll.insert(-99,99)
     ll.insert(100,88)
+    ll.remove(7)
     ll.travel()
 
 if __name__ == '__main__':
